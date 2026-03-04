@@ -1,0 +1,180 @@
+/* ============================================
+   Contact Us Section
+   Theme Colors: #3F927D (green), white, black
+   ============================================ */
+
+.contact {
+  width: 100%;
+  padding: 80px 0;
+  background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+  position: relative;
+}
+
+.contact__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+  width: 100%;
+}
+
+/* Contact Row */
+.contact__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+}
+
+.contact__title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+/* Contact Info */
+.contact__info {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.contact__phone,
+.contact__email {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.contact__phone:hover,
+.contact__email:hover {
+  color: #3F927D;
+  transform: translateY(-2px);
+}
+
+.contact__phone svg,
+.contact__email svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: #3F927D;
+  transition: all 0.3s ease;
+}
+
+.contact__phone:hover svg,
+.contact__email:hover svg {
+  color: #3F927D;
+  transform: scale(1.1);
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Large Tablet: 1024px */
+@media (max-width: 1024px) {
+  .contact {
+    padding: 60px 0;
+  }
+
+  .contact__container {
+    padding: 0 32px;
+  }
+
+  .contact__row {
+    gap: 32px;
+  }
+
+  .contact__title {
+    font-size: 2.25rem;
+  }
+
+  .contact__info {
+    gap: 32px;
+  }
+}
+
+/* Tablet: 768px */
+@media (max-width: 768px) {
+  .contact {
+    padding: 50px 0;
+  }
+
+  .contact__container {
+    padding: 0 24px;
+  }
+
+  .contact__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .contact__title {
+    font-size: 2rem;
+  }
+
+  .contact__info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .contact__phone,
+  .contact__email {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile: 480px */
+@media (max-width: 480px) {
+  .contact {
+    padding: 40px 0;
+  }
+
+  .contact__container {
+    padding: 0 16px;
+  }
+
+  .contact__row {
+    gap: 20px;
+  }
+
+  .contact__title {
+    font-size: 1.75rem;
+  }
+
+  .contact__phone,
+  .contact__email {
+    font-size: 0.9375rem;
+    gap: 10px;
+  }
+
+  .contact__phone svg,
+  .contact__email svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Small Mobile: 360px */
+@media (max-width: 360px) {
+  .contact__title {
+    font-size: 1.5rem;
+  }
+
+  .contact__phone,
+  .contact__email {
+    font-size: 0.875rem;
+  }
+}

@@ -1,0 +1,78 @@
+/* ============================================
+   Footer Section
+   Theme Colors: #3F927D (green), white, black
+   ============================================ */
+
+.footer {
+  width: 100%;
+  padding: 40px 0;
+  background: #000000;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+  width: 100%;
+  text-align: center;
+}
+
+.footer__copyright {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Large Tablet: 1024px */
+@media (max-width: 1024px) {
+  .footer {
+    padding: 32px 0;
+  }
+
+  .footer__container {
+    padding: 0 32px;
+  }
+}
+
+/* Tablet: 768px */
+@media (max-width: 768px) {
+  .footer {
+    padding: 28px 0;
+  }
+
+  .footer__container {
+    padding: 0 24px;
+  }
+
+  .footer__copyright {
+    font-size: 0.9375rem;
+  }
+}
+
+/* Mobile: 480px */
+@media (max-width: 480px) {
+  .footer {
+    padding: 24px 0;
+  }
+
+  .footer__container {
+    padding: 0 16px;
+  }
+
+  .footer__copyright {
+    font-size: 0.875rem;
+  }
+}
+
+/* Small Mobile: 360px */
+@media (max-width: 360px) {
+  .footer__copyright {
+    font-size: 0.8125rem;
+  }
+}

@@ -1,0 +1,361 @@
+/* ============================================
+   Header.css — Full Width Responsive Header
+   ============================================ */
+
+   @import url("https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500&display=swap");
+
+   /* ── CSS Variables ── */
+   :root {
+     --header-bg: #0d0d0d;
+     --header-bg-scrolled: rgba(13, 13, 13, 0.96);
+     --header-height: 72px;
+     --header-height-mobile: 60px;
+     --accent: #3F927D;
+     --accent-hover: #2d6b5a;
+     --text-primary: #f5f5f5;
+     --text-muted: #999;
+     --nav-link-color: #ccc;
+     --nav-link-hover: #ffffff;
+     --drawer-bg: #111111;
+     --border: rgba(255, 255, 255, 0.07);
+     --shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+     --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+     --font-display: "Syne", sans-serif;
+     --font-body: "DM Sans", sans-serif;
+   }
+   
+   /* ── Reset ── */
+   *,
+   *::before,
+   *::after {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+   }
+   
+   /* ── Header Base ── */
+   .header {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;          /* Full width */
+     z-index: 1000;
+     background: var(--header-bg);
+     border-bottom: 1px solid var(--border);
+     transition: background var(--transition), box-shadow var(--transition),
+       backdrop-filter var(--transition);
+     font-family: var(--font-body);
+   }
+   
+   .header--scrolled {
+     background: var(--header-bg-scrolled);
+     backdrop-filter: blur(18px);
+     -webkit-backdrop-filter: blur(18px);
+     box-shadow: var(--shadow);
+   }
+   
+   /* ── Inner Container ── */
+   .header__container {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     width: 100%;
+     max-width: 1400px;        /* Constrain content, but header stays full-width */
+     margin: 0 auto;
+     height: var(--header-height);
+     /* padding: 0 48px; */
+     gap: 24px;
+   }
+   
+   /* ── Logo ── */
+   .header__logo {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     text-decoration: none;
+     flex-shrink: 0;
+   }
+   
+   .logo__image {
+     height: 40px;
+     width: auto;
+     object-fit: contain;
+     transition: transform var(--transition);
+   }
+   
+   .header__logo:hover .logo__image {
+     transform: scale(1.05);
+   }
+   
+   /* ── Desktop Navigation ── */
+   .header__nav {
+     display: flex;
+     align-items: center;
+     gap: 8px;
+     flex: 1;
+     justify-content: center;
+   }
+   
+   .nav__link {
+     font-family: var(--font-body);
+     font-size: 0.9rem;
+     font-weight: 500;
+     color: var(--nav-link-color);
+     text-decoration: none;
+     padding: 8px 16px;
+     border-radius: 8px;
+     letter-spacing: 0.01em;
+     transition: color var(--transition), background var(--transition);
+     position: relative;
+   }
+   
+   .nav__link::after {
+     content: "";
+     position: absolute;
+     bottom: 4px;
+     left: 50%;
+     transform: translateX(-50%) scaleX(0);
+     width: 16px;
+     height: 2px;
+     background: var(--accent);
+     border-radius: 2px;
+     transition: transform var(--transition);
+   }
+   
+   .nav__link:hover {
+     color: var(--nav-link-hover);
+     background: rgba(255, 255, 255, 0.05);
+   }
+   
+   .nav__link:hover::after {
+     transform: translateX(-50%) scaleX(1);
+   }
+   
+   /* ── CTA Button ── */
+   .header__cta {
+     display: inline-flex;
+     align-items: center;
+     gap: 8px;
+     padding: 10px 24px;
+     background: var(--accent);
+     color: #fff;
+     font-family: var(--font-display);
+     font-size: 0.88rem;
+     font-weight: 700;
+     text-decoration: none;
+     border-radius: 10px;
+     letter-spacing: 0.02em;
+     white-space: nowrap;
+     flex-shrink: 0;
+     transition: background var(--transition), color var(--transition), transform var(--transition),
+       box-shadow var(--transition);
+     box-shadow: 0 2px 12px rgba(247, 247, 247, 0.35);
+   }
+   
+   .header__cta:hover {
+     background: var(--accent-hover);
+     color: #ffffff;
+     transform: translateY(-1px);
+     box-shadow: 0 6px 20px rgba(63, 146, 125, 0.35);
+   }
+   
+   .header__cta:hover svg {
+     stroke: #ffffff;
+   }
+   
+   .header__cta:active {
+     transform: translateY(0);
+   }
+   
+   /* ── Hamburger ── */
+   .header__hamburger {
+     display: none;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     gap: 5px;
+     width: 40px;
+     height: 40px;
+     background: transparent;
+     border: 1px solid var(--border);
+     border-radius: 8px;
+     cursor: pointer;
+     flex-shrink: 0;
+     transition: background var(--transition), border-color var(--transition);
+     padding: 0;
+   }
+   
+   .header__hamburger:hover {
+     background: rgba(255, 255, 255, 0.06);
+   }
+   
+   .header__hamburger span {
+     display: block;
+     width: 18px;
+     height: 2px;
+     background: var(--text-primary);
+     border-radius: 2px;
+     transition: transform var(--transition), opacity var(--transition);
+     transform-origin: center;
+   }
+   
+   .header__hamburger.is-open span:nth-child(1) {
+     transform: translateY(7px) rotate(45deg);
+   }
+   
+   .header__hamburger.is-open span:nth-child(2) {
+     opacity: 0;
+     transform: scaleX(0);
+   }
+   
+   .header__hamburger.is-open span:nth-child(3) {
+     transform: translateY(-7px) rotate(-45deg);
+   }
+   
+   /* ── Mobile Drawer ── */
+   .header__drawer {
+     display: none;
+     overflow: hidden;
+     max-height: 0;
+     background: var(--drawer-bg);
+     border-top: 1px solid var(--border);
+     transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+       opacity 0.25s ease;
+     opacity: 0;
+   }
+   
+   .header__drawer--open {
+     max-height: 400px;
+     opacity: 1;
+   }
+   
+   .drawer__nav {
+     display: flex;
+     flex-direction: column;
+     padding: 16px 24px 24px;
+     gap: 4px;
+   }
+   
+   .drawer__link {
+     font-family: var(--font-body);
+     font-size: 1rem;
+     font-weight: 500;
+     color: var(--nav-link-color);
+     text-decoration: none;
+     padding: 12px 16px;
+     border-radius: 10px;
+     transition: color var(--transition), background var(--transition);
+   }
+   
+   .drawer__link:hover {
+     color: var(--text-primary);
+     background: rgba(255, 255, 255, 0.05);
+   }
+   
+   .drawer__cta {
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     margin-top: 12px;
+     padding: 13px 24px;
+     background: var(--accent);
+     color: #fff;
+     font-family: var(--font-display);
+     font-size: 0.85rem;
+     font-weight: 700;
+     text-decoration: none;
+     border-radius: 10px;
+     letter-spacing: 0.02em;
+     transition: background var(--transition);
+     box-shadow: 0 2px 12px rgba(230, 57, 70, 0.35);
+   }
+   
+   .drawer__cta:hover {
+     background: var(--accent-hover);
+   }
+   
+   /* ── Body padding so content isn't hidden behind header ── */
+   body {
+     padding-top: var(--header-height);
+   }
+   
+   /* ============================================
+      RESPONSIVE BREAKPOINTS
+      ============================================ */
+   
+   /* Tablet: 1024px */
+   @media (max-width: 1024px) {
+     .header__container {
+       padding: 0 32px;
+     }
+   
+     .nav__link {
+       padding: 8px 12px;
+       font-size: 0.85rem;
+     }
+   }
+   
+  /* Small Tablet / Large Mobile: 768px */
+  @media (max-width: 768px) {
+    .header__nav {
+      display: none;   /* Hide desktop nav */
+    }
+  
+    .header__cta {
+      display: none;   /* Hide desktop CTA */
+    }
+  
+    .header__hamburger {
+      display: flex;   /* Show hamburger */
+      min-width: 48px;  /* Minimum touch target size */
+      min-height: 48px;
+      width: 48px;
+      height: 48px;
+    }
+  
+    .header__drawer {
+      display: block;  /* Enable drawer */
+    }
+
+    .drawer__link {
+      min-height: 48px; /* Minimum touch target size */
+      padding: 14px 16px; /* Adjust padding to meet min-height */
+    }
+
+    .drawer__cta {
+      min-height: 48px; /* Minimum touch target size */
+      min-width: 48px;
+    }
+  
+    .header__container {
+      padding: 0 20px;
+      height: var(--header-height-mobile);
+      gap: 8px; /* Minimum 8px spacing between interactive elements */
+    }
+  
+    body {
+      padding-top: var(--header-height-mobile);
+    }
+  }
+   
+   /* Mobile: 480px */
+   @media (max-width: 480px) {
+     .logo__image {
+       height: 35px;
+     }
+ 
+     .header__container {
+       padding: 0 16px;
+     }
+ 
+     .drawer__nav {
+       padding: 12px 16px 20px;
+     }
+   }
+   
+   /* Small Mobile: 360px */
+   @media (max-width: 360px) {
+     .logo__image {
+       height: 30px;
+     }
+   }

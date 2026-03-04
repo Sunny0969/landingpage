@@ -1,0 +1,321 @@
+/* ============================================
+   Gallery Slider Section
+   Theme Colors: #3F927D (green), white, black
+   ============================================ */
+
+.gallery {
+  width: 100%;
+  /* padding: 100px 0; */
+  background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+  width: 100%;
+}
+
+/* Header */
+.gallery__header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.gallery__title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* Slider Wrapper */
+.gallery__slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+
+/* Slider */
+.gallery__slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.gallery__slider:active {
+  cursor: grabbing;
+}
+
+.gallery__track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  touch-action: pan-y;
+}
+
+/* Desktop: 4 images per row */
+.gallery__slide {
+  flex: 0 0 25%;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+/* Slide Image */
+.gallery__image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #000000;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery__image-wrapper:hover {
+  transform: scale(1.05);
+}
+
+.gallery__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+.gallery__image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.gallery__image-wrapper:hover .gallery__image-overlay {
+  opacity: 1;
+}
+
+.gallery__image-content {
+  width: 100%;
+}
+
+.gallery__image-text {
+  color: #ffffff;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Dots Indicator (Mobile) */
+.gallery__dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px; /* Minimum 8px spacing - using 12px for better UX */
+  margin-top: 40px;
+}
+
+.gallery__dot {
+  position: relative;
+  width: 48px; /* 48px touch target */
+  height: 48px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Visual dot - small appearance */
+.gallery__dot::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.gallery__dot:hover::before {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.2);
+}
+
+.gallery__dot--active::before {
+  background: #3F927D;
+  width: 32px;
+  height: 12px;
+  border-radius: 6px;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Large Tablet: 1024px */
+@media (max-width: 1024px) {
+  .gallery {
+    padding: 80px 0;
+  }
+
+  .gallery__container {
+    padding: 0 32px;
+  }
+
+  .gallery__title {
+    font-size: 3rem;
+  }
+
+  .gallery__header {
+    margin-bottom: 50px;
+  }
+
+  .gallery__slider-wrapper {
+    gap: 16px;
+  }
+
+  .gallery__nav-button {
+    width: 45px;
+    height: 45px;
+  }
+
+  .gallery__slide {
+    padding: 0 8px;
+  }
+}
+
+/* Tablet: 768px */
+@media (max-width: 768px) {
+  .gallery {
+    padding: 60px 0;
+  }
+
+  .gallery__container {
+    padding: 0 24px;
+  }
+
+  .gallery__header {
+    margin-bottom: 40px;
+  }
+
+  .gallery__title {
+    font-size: 2.5rem;
+  }
+
+  /* Mobile: 1 full card + half second card */
+  .gallery__slider {
+    padding: 0 8px;
+  }
+
+  .gallery__slide {
+    flex: 0 0 85%;
+    padding: 0 8px;
+  }
+
+  .gallery__image-wrapper {
+    border-radius: 12px;
+  }
+}
+
+/* Mobile: 480px */
+@media (max-width: 480px) {
+  .gallery {
+    padding: 50px 0;
+  }
+
+  .gallery__container {
+    padding: 0 16px;
+  }
+
+  .gallery__header {
+    margin-bottom: 32px;
+  }
+
+  .gallery__title {
+    font-size: 2rem;
+  }
+
+  .gallery__slider {
+    padding: 0 4px;
+  }
+
+  .gallery__slide {
+    flex: 0 0 85%;
+    padding: 0 6px;
+  }
+
+  .gallery__image-overlay {
+    padding: 16px;
+  }
+
+  .gallery__image-text {
+    font-size: 0.875rem;
+  }
+
+  .gallery__dots {
+    margin-top: 32px;
+    gap: 8px; /* Minimum 8px spacing between dots */
+  }
+
+  .gallery__dot {
+    width: 48px; /* Maintain 48px touch target */
+    height: 48px;
+  }
+
+  .gallery__dot::before {
+    width: 10px; /* Visual dot stays small */
+    height: 10px;
+  }
+
+  .gallery__dot--active::before {
+    width: 28px;
+    height: 10px;
+  }
+}
+
+/* Small Mobile: 360px */
+@media (max-width: 360px) {
+  .gallery__title {
+    font-size: 1.75rem;
+  }
+
+  .gallery__slide {
+    flex: 0 0 85%;
+  }
+}
